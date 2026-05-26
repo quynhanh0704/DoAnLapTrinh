@@ -261,19 +261,66 @@ private:
      	transform(str.begin(), str.end(), str.begin(), ::tolower);
     	return str;
     }
+     int timViTri(string ma) const // THU
+    {
+        ma = toLower(ma);
+        for (size_t i = 0; i < dsSach.size(); ++i)
+        {          
+       	    if (toLower(dsSach[i]->getMaSoSach()) == ma) return i; 
+        }
+         return -1;
+    }
+   
 public:
-    void thongKe() {} // HIEN
-    void themSach() {} // HIEN
-    void xoaSach() {} // HIEN
+     ThuVien(string file) : tenFile(file) {
+        docTuFile(); 
+    }
     void timKiemMa() {} // THU
     void timKiemTen() {} // THU
     void timKiemNXB() {} // THU
     void docTuFile() // THU
     {
-        
-    } 
+        ifstream fileIn(tenFile);
+        if (!fileIn.is_open()) 
+        {  
+            cout << "[!] Khong the mo file " << tenFile << ". Thu vien hien tai dang trong.\n";
+            return;
+        }
+         for (auto sachPtr : dsSach) delete sachPtr;
+        dsSach.clear();
+        string dong;
+        while (getline(fileIn, dong)) {
+            if (dong.empty()) continue; 
+            stringstream ss(dong);      
+            string ma, ten, cd, tg, nxb, ngay, t_trang, t_luu;
+            getline(ss, ma, ','); getline(ss, ten, ','); 
+            getline(ss, cd, ',');
+            getline(ss, tg, ','); getline(ss, nxb, ','); getline(ss, ngay, ',');
+  		    getline(ss, t_trang, ',');
+            getline(ss, t_luu, ',');
+            
+            int soTrang = stoi(t_trang); 
+            int soBanLuu = stoi(t_luu);   
+            dsSach.push_back(new Sach(ma, ten, cd, tg, nxb, ngay, soTrang, soBanLuu));
+        }
+        fileIn.close(); // Đóng file sau khi đọc xong
+
+    }
+
+
+    ~ThuVien() // THU
+    {
+        for (auto sachPtr : dsSach) {
+            delete sachPtr; 
+        }
+        dsSach.clear(); 
+    }
+
     void Menu() {} // THU
     void dieuHuong() {} // THU
+    void thongKe() {} // HIEN
+    void themSach() {} // HIEN
+    void xoaSach() {} // HIEN
 };
 // ===================================================================================================================================
 //  HIEN
