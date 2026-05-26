@@ -263,7 +263,7 @@ public:
     void xoaSach() {} // HIEN
     void timKiemMa() {} // THU
     void timKiemTen() {} // THU
-    void timKiemNXB() {} // THU
+    void timKiemNXB() {} 
     void Menu() {} // THU
     void dieuHuong() {} // THU
 };
