@@ -275,9 +275,51 @@ public:
      ThuVien(string file) : tenFile(file) {
         docTuFile(); 
     }
-    void timKiemMa() {} // THU
-    void timKiemTen() {} // THU
-    void timKiemNXB() {} // THU
+    void timKiemMa() // THU
+    {
+         
+         bool thay = false; 
+         ma = toLower(ma);
+         cout << "\n--- KET QUA TIM KIEM THEO MA SACH ---\n"; 
+         for (const auto& s : dsSach) { 
+            if (toLower(s->getMaSoSach()) == ma) { 
+             cout << "[+] Tim thay sach: " << s->getTenSach() << " | Tac gia: " << s->getTacGia() << " [Con " << s->getSoBanLuu() << " ban luu]\n";
+             thay = true;
+             }
+         }
+         if (!thay) cout << "[-] Khong ton tai ma so sach nay trong he thong.\n";
+ }
+
+
+    void timKiemTen() // THU
+    {
+        bool thay = false;
+        ten = toLower(ten); 
+        cout << "\n--- KET QUA TIM KIEM THEO TEN SACH ---\n";
+         for (const auto& s : dsSach) {
+             if (toLower(s->getTenSach()).find(ten) != string::npos) 
+             {
+                 cout << "[+] Ma: " << s->getMaSoSach() << " | " << s->getTenSach() << " (" << s->getChuDe() << ")\n";
+                 thay = true;
+             } 
+        } 
+    }
+    void timKiemTheoNXB(string nxb) const // THU
+    { 
+        bool thay = false;
+        nxb = toLower(nxb); 
+        cout << "\n--- KET QUA TIM KIEM THEO NHA XUAT BAN ---\n"; 
+        for (const auto& s : dsSach) { 
+            if (toLower(s->getNhaXuatBan()) == nxb) 
+            { 
+                cout << "[+] Ma: " << s->getMaSoSach() << " | " << s->getTenSach() << " (" << s->getSoTrang() << " trang)\n"; 
+                thay = true;
+            } 
+        } 
+        if (!thay) cout << "[-] Thu vien chua nhap sach cua NXB nay.\n"; 
+        if (!thay) cout << "[-] Khong tim thay sach nao khop voi tu khoa: " << ten << endl; 
+
+    } 
     void docTuFile() // THU
     {
         ifstream fileIn(tenFile);
@@ -317,6 +359,57 @@ public:
     }
 
     void Menu() {} // THU
+    {    
+        void chayMenu() {
+        int choice;
+        do {
+            cout << "\033[2J\033[H"; // Lệnh ANSI xóa sạch màn hình cũ console mỗi lần lặp lại menu
+            cout << "\n\t+-----------------------------------------+";
+            cout << "\n\t|     HE THONG QUAN LY THU VIEN UML       |";
+            cout << "\n\t+-----------------------------------------+";
+            cout << "\n\t|  1. Xem toan bo danh sach sach          |";
+            cout << "\n\t|  2. Them sach moi                       |";
+            cout << "\n\t|  3. Xoa sach khoi he thong              |";
+            cout << "\n\t|  4. Tim kiem sach (Thong minh)          |";
+            cout << "\n\t|  5. Xuat file bao cao (.txt)            |";
+            cout << "\n\t|  0. Sao luu du lieu & Thoat             |";
+            cout << "\n\t+-----------------------------------------+\n";
+
+            while (true) {
+                try {
+                    cout << "\t=> Chon chuc nang (0-5): "; cin >> choice;
+                    if (cin.fail() || choice < 0 || choice > 5) {
+                        throw runtime_error("\t[Loi] Vui long nhap dung so tu 0 den 5!");
+                    }
+                    break;                } 
+                catch (const runtime_error &e) {
+                    cin.clear(); cin.ignore(1000, '\n');
+                    cout << e.what() << endl;                 }
+            }
+            cin.ignore(); 
+            switch (choice) {
+                case 0:
+                    ghiRaFile(); 
+                    cout << "[*] Tat chuong trinh thanh cong. Hen gap lai ban!" << endl;
+                    break;
+                case 1: xuatDanhSach(); system("pause"); break;
+                case 2: themSach(); system("pause"); break;
+                case 3: xoaSach(); system("pause"); break;
+                case 4: timKiem(); system("pause"); break;
+                case 5: {
+                    string nameF; cout << "Nhap ten file muon xuat (vd: baocao.txt): ";
+                    getline(cin, nameF);
+                    xuatDanhSachRaFile(nameF);
+                    system("pause");
+                    break;
+                }
+            }
+        } while (choice != 0); 
+    }
+}
+
+    }
+
     void dieuHuong() {} // THU
     void thongKe() {} // HIEN
     void themSach() {} // HIEN
