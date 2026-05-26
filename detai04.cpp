@@ -256,7 +256,11 @@ bool SachMuonDoc::quaHan() {
 class ThuVien {
 private:
     vector<Sach*> dsSach;
-
+    string tenFile;       
+    string toLower(string str) const {
+     	transform(str.begin(), str.end(), str.begin(), ::tolower);
+    	return str;
+    }
 public:
     void thongKe() {} // HIEN
     void themSach() {} // HIEN
@@ -264,6 +268,10 @@ public:
     void timKiemMa() {} // THU
     void timKiemTen() {} // THU
     void timKiemNXB() {} // THU
+    void docTuFile() // THU
+    {
+        
+    } 
     void Menu() {} // THU
     void dieuHuong() {} // THU
 };
