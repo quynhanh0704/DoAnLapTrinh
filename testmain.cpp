@@ -9,6 +9,7 @@
 #include <string>
 #include <iomanip>
 #include <ctime>
+#include <cctype>
 using namespace std;
 
 // ================================================================
@@ -16,7 +17,7 @@ using namespace std;
 // ================================================================
 class Sach {
 protected:
-    string maSach, tenSach, nhaXuatBan;
+    string maSach, tenSach, tacGia;
     int    soBanLuu;
 
 public:
@@ -25,10 +26,16 @@ public:
 
     string getMaSach() const { return maSach; }
     string getTenSach() const { return tenSach; }
-    string getNhaXuatBan() const { return nhaXuatBan; }
+    string getTacGia() const { return tacGia; }
+    
+    // Cac setter de phuc vu chuc nang Sua sach
+    void setMaSach(string ma) { maSach = ma; }
+    void setTenSach(string ten) { tenSach = ten; }
+    void setTacGia(string tg) { tacGia = tg; }
+    void setSoBanLuu(int sl) { soBanLuu = sl; }
     
     virtual char   getLoai() const = 0;
-    virtual bool   isQuaHan() const = 0; // Ham thuan ao kiem tra qua han chung
+    virtual bool   isQuaHan() const = 0; 
     virtual void   xuatDong(ostream& os) const = 0; 
     virtual string ghiRaFile() const = 0;
     virtual void   docTuFile(const string& dong) = 0;
@@ -36,7 +43,7 @@ public:
     virtual void nhapThongTin() {
         cout << "  Ma sach    : "; getline(cin, maSach);
         cout << "  Ten sach   : "; getline(cin, tenSach);
-        cout << "  Nha XB     : "; getline(cin, nhaXuatBan);
+        cout << "  Tac gia    : "; getline(cin, tacGia);
         cout << "  Tong SL    : "; cin >> soBanLuu;
         cin.ignore();
     }
@@ -77,7 +84,7 @@ public:
         os << left << "  |"
            << " " << setw(9)  << maSach       << "|"
            << " " << setw(24) << tenSach      << "|"
-           << " " << setw(14) << nhaXuatBan   << "|"
+           << " " << setw(14) << tacGia       << "|"
            << " " << setw(4)  << soBanLuu     << "|"
            << " " << setw(17) << tenNguoiMuon << "|"
            << " " << setw(11) << ngayMuon     << "|"
@@ -87,7 +94,7 @@ public:
 
     string ghiRaFile() const override {
         ostringstream o;
-        o << "V|" << maSach << "|" << tenSach << "|" << nhaXuatBan << "|" << soBanLuu << "|"
+        o << "V|" << maSach << "|" << tenSach << "|" << tacGia << "|" << soBanLuu << "|"
           << ngayMuon << "|" << ngayHenTra << "|" << tenNguoiMuon;
         return o.str();
     }
@@ -95,7 +102,7 @@ public:
     void docTuFile(const string& dong) override {
         istringstream ss(dong); string tok;
         getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
-        getline(ss, nhaXuatBan, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
+        getline(ss, tacGia, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
         getline(ss, ngayMuon, '|'); getline(ss, ngayHenTra, '|'); getline(ss, tenNguoiMuon);
     }
 };
@@ -144,7 +151,7 @@ public:
         os << left << "  |"
            << " " << setw(9)  << maSach     << "|"
            << " " << setw(24) << tenSach    << "|"
-           << " " << setw(14) << nhaXuatBan << "|"
+           << " " << setw(14) << tacGia     << "|"
            << " " << setw(4)  << soBanLuu   << "|"
            << " " << setw(9)  << gioMuon    << "|"
            << " " << setw(9)  << gt         << "|"
@@ -153,7 +160,7 @@ public:
 
     string ghiRaFile() const override {
         ostringstream o;
-        o << "D|" << maSach << "|" << tenSach << "|" << nhaXuatBan << "|" << soBanLuu << "|"
+        o << "D|" << maSach << "|" << tenSach << "|" << tacGia << "|" << soBanLuu << "|"
           << gioMuon << "|" << (gioTra.empty() ? "--:--" : gioTra);
         return o.str();
     }
@@ -161,7 +168,7 @@ public:
     void docTuFile(const string& dong) override {
         istringstream ss(dong); string tok;
         getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
-        getline(ss, nhaXuatBan, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
+        getline(ss, tacGia, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
         getline(ss, gioMuon, '|'); getline(ss, gioTra);
     }
 };
@@ -178,7 +185,7 @@ public:
         os << "\n  +-----------------------------------------------------------------------------------------------------------------------+\n"
            << "  |                                        DANH SACH MUON VE                                                              |\n";
         duongKeVe(os);
-        os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Nha xuat ban" 
+        os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Tac gia" 
            << "| " << setw(4) << "SL" << "| " << setw(17) << "Nguoi muon" << "| " << setw(11) << "Ngay muon" 
            << "| " << setw(11) << "Ngay tra" << "| " << setw(12) << "Trang thai" << "|\n";
         duongKeVe(os);
@@ -188,7 +195,7 @@ public:
         os << "\n  +-------------------------------------------------------------------------------------------------------+\n"
            << "  |                                        DANH SACH MUON DOC                                             |\n";
         duongKeDoc(os);
-        os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Nha xuat ban" 
+        os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Tac gia" 
            << "| " << setw(4) << "SL" << "| " << setw(9) << "Gio muon" << "| " << setw(9) << "Gio tra" 
            << "| " << setw(21) << "Trang thai/Thoi gian" << "|\n";
         duongKeDoc(os);
@@ -258,14 +265,16 @@ public:
     }
 
     void timKiem() const {
-        string tu; cout << "  Nhap tu khoa (Ma/Ten/NXB): "; getline(cin, tu);
+        string tu; cout << "  Nhap tu khoa (Ma/Ten/TacGia): "; getline(cin, tu);
         for (char& c : tu) c = tolower(c);
         
         vector<Sach*> dsKetQua;
         for (Sach* s : dsSach) {
-            string ma = s->getMaSach(), ten = s->getTenSach(), nxb = s->getNhaXuatBan();
-            for (char& c : ma) c = tolower(c); for (char& c : ten) c = tolower(c); for (char& c : nxb) c = tolower(c);
-            if (ma.find(tu) != string::npos || ten.find(tu) != string::npos || nxb.find(tu) != string::npos)
+            string ma = s->getMaSach(), ten = s->getTenSach(), tg = s->getTacGia();
+            for (char& c : ma) c = tolower(c); 
+            for (char& c : ten) c = tolower(c); 
+            for (char& c : tg) c = tolower(c);
+            if (ma.find(tu) != string::npos || ten.find(tu) != string::npos || tg.find(tu) != string::npos)
                 dsKetQua.push_back(s);
         }
         
@@ -293,6 +302,53 @@ public:
         if (i < 0) { cout << "  Khong tim thay ma sach!\n"; return; }
         delete dsSach[i]; dsSach.erase(dsSach.begin() + i); ghiRaFile();
         cout << "  Da xoa sach va cap nhat file.\n";
+    }
+
+    // Tinh nang Sua Sach
+    void suaSach() {
+        string ma; cout << "  Nhap ma sach can sua: "; getline(cin, ma);
+        int i = timViTri(ma);
+        if (i < 0) { cout << "  [!] Khong tim thay sach co ma " << ma << "!\n"; return; }
+        
+        cout << "\n  +--------------------------------+\n";
+        cout << "  |     CHON THONG TIN CAN SUA     |\n";
+        cout << "  +--------------------------------+\n";
+        cout << "  | 1. Ma sach                     |\n";
+        cout << "  | 2. Ten sach                    |\n";
+        cout << "  | 3. Tac gia                     |\n";
+        cout << "  | 4. So luong                    |\n";
+        cout << "  +--------------------------------+\n";
+        cout << "  Nhap cac lua chon (VD: 124 de sua Ma, Ten, So luong): ";
+        
+        string choices;
+        getline(cin, choices);
+        Sach* s = dsSach[i];
+        
+        // Vong lap thong minh xu ly cac ki tu nguoi dung go
+        for(char c : choices) {
+            if (c == '1') {
+                string newMa; cout << "  - Nhap ma sach moi: "; getline(cin, newMa);
+                if (newMa != s->getMaSach() && timViTri(newMa) >= 0) {
+                    cout << "    [!] Ma sach " << newMa << " da ton tai. Bo qua!\n";
+                } else {
+                    s->setMaSach(newMa);
+                }
+            }
+            else if (c == '2') {
+                string newTen; cout << "  - Nhap ten sach moi: "; getline(cin, newTen);
+                s->setTenSach(newTen);
+            }
+            else if (c == '3') {
+                string newTG; cout << "  - Nhap tac gia moi: "; getline(cin, newTG);
+                s->setTacGia(newTG);
+            }
+            else if (c == '4') {
+                int newSL; cout << "  - Nhap so luong moi: "; cin >> newSL; cin.ignore();
+                s->setSoBanLuu(newSL);
+            }
+        }
+        ghiRaFile();
+        cout << "  => Da cap nhat thong tin sach va luu vao file.\n";
     }
 
     void thongKe() const {
@@ -324,13 +380,14 @@ public:
                 << "  |  4. Tim kiem sach                                    |\n"
                 << "  |  5. Them sach                                        |\n"
                 << "  |  6. Xoa sach                                         |\n"
-                << "  |  7. Thong ke thu vien                                |\n"
+                << "  |  7. Sua thong tin sach                               |\n"
+                << "  |  8. Thong ke thu vien                                |\n"
                 << "  |  0. Thoat chuong trinh                               |\n"
                 << "  +======================================================+\n"
                 << "  Lua chon: ";
             cin >> c; cin.ignore();
 
-            if (c >= 2 && c <= 7 && !isLoaded) {
+            if (c >= 2 && c <= 8 && !isLoaded) {
                 cout << "  [!] Vui long nhap thong tin tu file (Phim 1) truoc!\n";
                 continue;
             }
@@ -342,7 +399,8 @@ public:
                 case 4: timKiem(); break;
                 case 5: themSach(); break;
                 case 6: xoaSach(); break;
-                case 7: thongKe(); break;
+                case 7: suaSach(); break;
+                case 8: thongKe(); break;
                 case 0: cout << "  Tam biet!\n"; break;
                 default: cout << "  Lua chon khong hop le!\n";
             }
