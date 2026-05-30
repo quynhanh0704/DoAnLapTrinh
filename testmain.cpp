@@ -28,8 +28,6 @@ public:
         cin >> ngay >> dau1 >> thang >> dau2 >> nam;
     }
     
-    void display() const { cout << toString(); }
-    
     void ganTuChuoi(const string &s) {
         stringstream ss(s); string date;
         getline(ss, date, '/'); ngay = date.empty() ? 0 : atoi(date.c_str());
@@ -42,10 +40,6 @@ public:
        if(nam == x.nam && thang > x.thang) return true;
        if(nam == x.nam && thang == x.thang && ngay > x.ngay) return true;
        return false;
-    }
-    
-    bool operator==(const MyDate &a) const {
-        return ngay == a.ngay && thang == a.thang && nam == a.nam;
     }
     
     string toString() const {
@@ -71,8 +65,6 @@ public:
         string s; getline(cin, s); ganTuChuoi(s);
     }
     
-    void display() const { cout << toString(); }
-    
     void ganTuChuoi(const string &s) {
         if (s == "--:--" || s == "") { gio = -1; phut = -1; giay = -1; return; }
         stringstream ss(s); string time;
@@ -90,8 +82,6 @@ public:
     }
 
     bool isChuaTra() const { return gio == -1; }
-    int getGio() const { return gio; }
-    int getPhut() const { return phut; }
     
     string toString() const {
         if (gio == -1) return "--:--";
@@ -214,17 +204,6 @@ public:
 class SachMuonDoc : public Sach {
 private:
     MyTime gioMuon, gioHenTra; 
-
-    int tinhThoiGianDoc() const {
-        if (gioMuon.isChuaTra()) return 0;
-        int phutMuon = gioMuon.getGio() * 60 + gioMuon.getPhut();
-        
-        MyTime gioHienTai(14, 0, 0); // Gio bao cao do an
-        int phutHienTai = gioHienTai.getGio() * 60 + gioHienTai.getPhut();
-        
-        int diff = phutHienTai - phutMuon;
-        return (diff < 0) ? diff + 1440 : diff;
-    }
 
 public:
     SachMuonDoc() {}
