@@ -8,9 +8,99 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include <ctime>
+#include <cstdlib>
 #include <cctype>
 using namespace std;
+
+// ================================================================
+//  CLASS MyDate 
+// ================================================================
+class MyDate {
+private:
+    int ngay, thang, nam;
+public:
+    MyDate(int n = 0, int t = 0, int na = 0) {
+        ngay = n; thang = t; nam = na;
+    }
+    
+    void nhap() {
+        char dau1, dau2;
+        cin >> ngay >> dau1 >> thang >> dau2 >> nam;
+    }
+    
+    void display() const { cout << toString(); }
+    
+    void ganTuChuoi(const string &s) {
+        stringstream ss(s); string date;
+        getline(ss, date, '/'); ngay = date.empty() ? 0 : atoi(date.c_str());
+        getline(ss, date, '/'); thang = date.empty() ? 0 : atoi(date.c_str());
+        getline(ss, date);      nam = date.empty() ? 0 : atoi(date.c_str());
+    }
+    
+    bool operator>(const MyDate &x) const {
+       if(nam > x.nam) return true;
+       if(nam == x.nam && thang > x.thang) return true;
+       if(nam == x.nam && thang == x.thang && ngay > x.ngay) return true;
+       return false;
+    }
+    
+    bool operator==(const MyDate &a) const {
+        return ngay == a.ngay && thang == a.thang && nam == a.nam;
+    }
+    
+    string toString() const {
+        stringstream ss;
+        if (ngay < 10) ss << "0"; ss << ngay << "/";
+        if (thang < 10) ss << "0"; ss << thang << "/" << nam;
+        return ss.str();
+    }
+};
+
+// ================================================================
+//  CLASS MyTime 
+// ================================================================
+class MyTime {
+private:
+    int gio, phut, giay;
+public:
+    MyTime(int g = 0, int p = 0, int gi = 0) {
+        gio = g; phut = p; giay = gi;
+    }
+    
+    void nhap() {
+        string s; getline(cin, s); ganTuChuoi(s);
+    }
+    
+    void display() const { cout << toString(); }
+    
+    void ganTuChuoi(const string &s) {
+        if (s == "--:--" || s == "") { gio = -1; phut = -1; giay = -1; return; }
+        stringstream ss(s); string time;
+        getline(ss, time, ':'); gio = time.empty() ? 0 : atoi(time.c_str());
+        getline(ss, time, ':'); phut = time.empty() ? 0 : atoi(time.c_str());
+        if (getline(ss, time, ':')) giay = time.empty() ? 0 : atoi(time.c_str());
+        else giay = 0;
+    }
+    
+    bool operator>(const MyTime &x) const {
+        if(gio > x.gio) return true;
+        if(gio == x.gio && phut > x.phut) return true;
+        if(gio == x.gio && phut == x.phut && giay > x.giay) return true;
+        return false;
+    }
+
+    bool isChuaTra() const { return gio == -1; }
+    int getGio() const { return gio; }
+    int getPhut() const { return phut; }
+    
+    string toString() const {
+        if (gio == -1) return "--:--";
+        stringstream ss;
+        if(gio < 10) ss << "0"; ss << gio << ":";
+        if(phut < 10) ss << "0"; ss << phut;
+        return ss.str();
+    }
+};
 
 // ================================================================
 //  LOP CO SO TRUU TUONG: Sach
@@ -28,7 +118,6 @@ public:
     string getTenSach() const { return tenSach; }
     string getTacGia() const { return tacGia; }
     
-    // Cac setter de phuc vu chuc nang Sua sach
     void setMaSach(string ma) { maSach = ma; }
     void setTenSach(string ten) { tenSach = ten; }
     void setTacGia(string tg) { tacGia = tg; }
@@ -54,29 +143,23 @@ public:
 // ================================================================
 class SachMuonVe : public Sach {
 private:
-    string ngayMuon, ngayHenTra, tenNguoiMuon;
-
-    int dateToInt(const string& dateStr) const {
-        if (dateStr.length() < 10) return 99999999;
-        return stoi(dateStr.substr(6, 4)) * 10000 + stoi(dateStr.substr(3, 2)) * 100 + stoi(dateStr.substr(0, 2));
-    }
+    MyDate ngayMuon, ngayHenTra; 
+    string tenNguoiMuon;
 
 public:
     SachMuonVe() {}
     char getLoai() const override { return 'V'; }
 
     bool isQuaHan() const override {
-        if (ngayHenTra.empty()) return false;
-        time_t t = time(0); tm* now = localtime(&t);
-        int currentYMD = (now->tm_year + 1900) * 10000 + (now->tm_mon + 1) * 100 + now->tm_mday;
-        return currentYMD > dateToInt(ngayHenTra);
+        MyDate ngayHienTai(10, 6, 2026); // Ngay bao cao
+        return (ngayHienTai > ngayHenTra); 
     }
 
     void nhapThongTin() override {
         Sach::nhapThongTin();
-        cout << "  Ten nguoi muon           : "; getline(cin, tenNguoiMuon);
-        cout << "  Ngay muon  (dd/mm/yyyy)  : "; getline(cin, ngayMuon);
-        cout << "  Ngay hen tra (dd/mm/yyyy): "; getline(cin, ngayHenTra);
+        cout << "  Ten nguoi muon             : "; getline(cin, tenNguoiMuon);
+        cout << "  Ngay muon (VD: 01/05/2026) : "; ngayMuon.nhap(); cin.ignore();
+        cout << "  Ngay tra  (VD: 15/05/2026) : "; ngayHenTra.nhap(); cin.ignore();
     }
 
     void xuatDong(ostream& os) const override {
@@ -87,15 +170,15 @@ public:
            << " " << setw(14) << tacGia       << "|"
            << " " << setw(4)  << soBanLuu     << "|"
            << " " << setw(17) << tenNguoiMuon << "|"
-           << " " << setw(11) << ngayMuon     << "|"
-           << " " << setw(11) << ngayHenTra   << "|"
+           << " " << setw(11) << ngayMuon.toString()   << "|" 
+           << " " << setw(11) << ngayHenTra.toString() << "|"
            << " " << setw(12) << trangThai    << "|\n";
     }
 
     string ghiRaFile() const override {
         ostringstream o;
         o << "V|" << maSach << "|" << tenSach << "|" << tacGia << "|" << soBanLuu << "|"
-          << ngayMuon << "|" << ngayHenTra << "|" << tenNguoiMuon;
+          << ngayMuon.toString() << "|" << ngayHenTra.toString() << "|" << tenNguoiMuon;
         return o.str();
     }
 
@@ -103,7 +186,11 @@ public:
         istringstream ss(dong); string tok;
         getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
         getline(ss, tacGia, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
-        getline(ss, ngayMuon, '|'); getline(ss, ngayHenTra, '|'); getline(ss, tenNguoiMuon);
+        
+        string ngM, ngT;
+        getline(ss, ngM, '|'); ngayMuon.ganTuChuoi(ngM);
+        getline(ss, ngT, '|'); ngayHenTra.ganTuChuoi(ngT);
+        getline(ss, tenNguoiMuon);
     }
 };
 
@@ -112,22 +199,16 @@ public:
 // ================================================================
 class SachMuonDoc : public Sach {
 private:
-    string gioMuon, gioTra;
-
-    int gioToPhut(const string& g) const {
-        if (g.size() < 5) return 0;
-        return stoi(g.substr(0, 2)) * 60 + stoi(g.substr(3, 2));
-    }
+    MyTime gioMuon, gioHenTra; 
 
     int tinhThoiGianDoc() const {
-        if (gioMuon.empty()) return -1;
-        int phutMuon = gioToPhut(gioMuon), phutTra;
-        if (gioTra.empty() || gioTra == "--:--") {
-            time_t t = time(0); tm* now = localtime(&t);
-            phutTra = now->tm_hour * 60 + now->tm_min;
-        } else phutTra = gioToPhut(gioTra);
+        if (gioMuon.isChuaTra()) return 0;
+        int phutMuon = gioMuon.getGio() * 60 + gioMuon.getPhut();
         
-        int diff = phutTra - phutMuon;
+        MyTime gioHienTai(14, 0, 0); // Gio bao cao
+        int phutHienTai = gioHienTai.getGio() * 60 + gioHienTai.getPhut();
+        
+        int diff = phutHienTai - phutMuon;
         return (diff < 0) ? diff + 1440 : diff;
     }
 
@@ -135,33 +216,43 @@ public:
     SachMuonDoc() {}
     char getLoai() const override { return 'D'; }
 
-    bool isQuaHan() const override { return (tinhThoiGianDoc() > 240); }
+    // Logic kiem tra qua han don gian nhat: gioHienTai > gioHenTra
+    bool isQuaHan() const override { 
+        MyTime gioHienTai(14, 0, 0); 
+        if (gioHenTra.isChuaTra()) return false; // Neu khong hen tra thi khong qua han
+        return gioHienTai > gioHenTra; 
+    }
 
     void nhapThongTin() override {
         Sach::nhapThongTin();
-        cout << "  Gio muon (HH:MM)                             : "; getline(cin, gioMuon);
-        cout << "  Gio tra  (HH:MM, nhap '--:--' neu chua tra)  : "; getline(cin, gioTra);
+        cout << "  Gio muon    (HH:MM)                        : "; gioMuon.nhap();
+        cout << "  Gio hen tra (HH:MM, go '--:--' neu khong)  : "; gioHenTra.nhap();
     }
 
     void xuatDong(ostream& os) const override {
-        string gt = gioTra.empty() ? "--:--" : gioTra;
-        int t = tinhThoiGianDoc();
-        string thoiGian = to_string(t/60) + "h" + to_string(t%60) + "m " + (isQuaHan() ? "[QUA HAN]" : "");
+        // Neu qua han -> in [QUA HAN], neu khong -> in thoi gian da doc
+        string thoiGian;
+        if (isQuaHan()) {
+            thoiGian = "[QUA HAN]";
+        } else {
+            int t = tinhThoiGianDoc();
+            thoiGian = to_string(t/60) + "h" + to_string(t%60) + "m";
+        }
         
         os << left << "  |"
            << " " << setw(9)  << maSach     << "|"
            << " " << setw(24) << tenSach    << "|"
            << " " << setw(14) << tacGia     << "|"
            << " " << setw(4)  << soBanLuu   << "|"
-           << " " << setw(9)  << gioMuon    << "|"
-           << " " << setw(9)  << gt         << "|"
+           << " " << setw(9)  << gioMuon.toString()    << "|"
+           << " " << setw(9)  << gioHenTra.toString()  << "|"
            << " " << setw(21) << thoiGian   << "|\n";
     }
 
     string ghiRaFile() const override {
         ostringstream o;
         o << "D|" << maSach << "|" << tenSach << "|" << tacGia << "|" << soBanLuu << "|"
-          << gioMuon << "|" << (gioTra.empty() ? "--:--" : gioTra);
+          << gioMuon.toString() << "|" << gioHenTra.toString();
         return o.str();
     }
 
@@ -169,7 +260,10 @@ public:
         istringstream ss(dong); string tok;
         getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
         getline(ss, tacGia, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
-        getline(ss, gioMuon, '|'); getline(ss, gioTra);
+        
+        string gM, gT;
+        getline(ss, gM, '|'); gioMuon.ganTuChuoi(gM);
+        getline(ss, gT);      gioHenTra.ganTuChuoi(gT);
     }
 };
 
@@ -195,8 +289,9 @@ public:
         os << "\n  +-------------------------------------------------------------------------------------------------------+\n"
            << "  |                                        DANH SACH MUON DOC                                             |\n";
         duongKeDoc(os);
+        // Da doi ten cot thanh Gio hen de phu hop voi code hien tai
         os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Tac gia" 
-           << "| " << setw(4) << "SL" << "| " << setw(9) << "Gio muon" << "| " << setw(9) << "Gio tra" 
+           << "| " << setw(4) << "SL" << "| " << setw(9) << "Gio muon" << "| " << setw(9) << "Gio hen" 
            << "| " << setw(21) << "Trang thai/Thoi gian" << "|\n";
         duongKeDoc(os);
     }
@@ -204,11 +299,11 @@ public:
     static void xuatBang(ostream& os, const vector<Sach*>& ds) {
         tieuDeVe(os); bool coVe = false;
         for (const Sach* s : ds) if (s->getLoai() == 'V') { s->xuatDong(os); duongKeVe(os); coVe = true; }
-        if (!coVe) { os << "  | " << left << setw(116) << "Khong co sach muon ve" << "|\n"; duongKeVe(os); }
+        if (!coVe) { os << "  | " << left << setw(117) << "Khong co sach muon ve" << "|\n"; duongKeVe(os); }
 
         tieuDeDoc(os); bool coDoc = false;
         for (const Sach* s : ds) if (s->getLoai() == 'D') { s->xuatDong(os); duongKeDoc(os); coDoc = true; }
-        if (!coDoc) { os << "  | " << left << setw(102) << "Khong co sach muon doc" << "|\n"; duongKeDoc(os); }
+        if (!coDoc) { os << "  | " << left << setw(101) << "Khong co sach muon doc" << "|\n"; duongKeDoc(os); }
     }
 };
 
@@ -304,7 +399,6 @@ public:
         cout << "  Da xoa sach va cap nhat file.\n";
     }
 
-    // Tinh nang Sua Sach
     void suaSach() {
         string ma; cout << "  Nhap ma sach can sua: "; getline(cin, ma);
         int i = timViTri(ma);
@@ -324,15 +418,12 @@ public:
         getline(cin, choices);
         Sach* s = dsSach[i];
         
-        // Vong lap thong minh xu ly cac ki tu nguoi dung go
         for(char c : choices) {
             if (c == '1') {
                 string newMa; cout << "  - Nhap ma sach moi: "; getline(cin, newMa);
                 if (newMa != s->getMaSach() && timViTri(newMa) >= 0) {
                     cout << "    [!] Ma sach " << newMa << " da ton tai. Bo qua!\n";
-                } else {
-                    s->setMaSach(newMa);
-                }
+                } else { s->setMaSach(newMa); }
             }
             else if (c == '2') {
                 string newTen; cout << "  - Nhap ten sach moi: "; getline(cin, newTen);
