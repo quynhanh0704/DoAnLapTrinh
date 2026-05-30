@@ -13,7 +13,7 @@
 using namespace std;
 
 // ================================================================
-//  CLASS MyDate 
+//  CLASS MyDate (Xu ly ngay thang bang Toan tu)
 // ================================================================
 class MyDate {
 private:
@@ -57,7 +57,7 @@ public:
 };
 
 // ================================================================
-//  CLASS MyTime 
+//  CLASS MyTime (Xu ly gio phut bang Toan tu)
 // ================================================================
 class MyTime {
 private:
@@ -107,20 +107,25 @@ public:
 // ================================================================
 class Sach {
 protected:
-    string maSach, tenSach, tacGia;
-    int    soBanLuu;
+    string maSach, tenSach, chuDe, tacGia, nhaXuatBan;
+    int    namXuatBan, soTrang, soBanLuu;
 
 public:
-    Sach() : soBanLuu(0) {}
+    Sach() : namXuatBan(0), soTrang(0), soBanLuu(0) {}
     virtual ~Sach() {}
 
     string getMaSach() const { return maSach; }
     string getTenSach() const { return tenSach; }
+    string getChuDe() const { return chuDe; }
     string getTacGia() const { return tacGia; }
     
     void setMaSach(string ma) { maSach = ma; }
     void setTenSach(string ten) { tenSach = ten; }
+    void setChuDe(string cd) { chuDe = cd; }
     void setTacGia(string tg) { tacGia = tg; }
+    void setNhaXuatBan(string nxb) { nhaXuatBan = nxb; }
+    void setNamXuatBan(int nxb) { namXuatBan = nxb; }
+    void setSoTrang(int st) { soTrang = st; }
     void setSoBanLuu(int sl) { soBanLuu = sl; }
     
     virtual char   getLoai() const = 0;
@@ -130,10 +135,14 @@ public:
     virtual void   docTuFile(const string& dong) = 0;
 
     virtual void nhapThongTin() {
-        cout << "  Ma sach    : "; getline(cin, maSach);
-        cout << "  Ten sach   : "; getline(cin, tenSach);
-        cout << "  Tac gia    : "; getline(cin, tacGia);
-        cout << "  Tong SL    : "; cin >> soBanLuu;
+        cout << "  Ma sach      : "; getline(cin, maSach);
+        cout << "  Ten sach     : "; getline(cin, tenSach);
+        cout << "  Chu de       : "; getline(cin, chuDe);
+        cout << "  Tac gia      : "; getline(cin, tacGia);
+        cout << "  Nha xuat ban : "; getline(cin, nhaXuatBan);
+        cout << "  Nam san xuat : "; cin >> namXuatBan;
+        cout << "  So trang     : "; cin >> soTrang;
+        cout << "  Tong ban luu : "; cin >> soBanLuu;
         cin.ignore();
     }
 };
@@ -144,53 +153,58 @@ public:
 class SachMuonVe : public Sach {
 private:
     MyDate ngayMuon, ngayHenTra; 
-    string tenNguoiMuon;
 
 public:
     SachMuonVe() {}
     char getLoai() const override { return 'V'; }
 
     bool isQuaHan() const override {
-        MyDate ngayHienTai(10, 6, 2026); // Ngay bao cao
+        MyDate ngayHienTai(10, 6, 2026); // Ngay bao cao do an
         return (ngayHienTai > ngayHenTra); 
     }
 
     void nhapThongTin() override {
         Sach::nhapThongTin();
-        cout << "  Ten nguoi muon             : "; getline(cin, tenNguoiMuon);
         cout << "  Ngay muon (VD: 01/05/2026) : "; ngayMuon.nhap(); cin.ignore();
         cout << "  Ngay tra  (VD: 15/05/2026) : "; ngayHenTra.nhap(); cin.ignore();
     }
 
     void xuatDong(ostream& os) const override {
-        string trangThai = isQuaHan() ? "[QUA HAN]" : "";
+        string trangThai = isQuaHan() ? "Qua Han" : "Dang Muon";
         os << left << "  |"
+           << " " << setw(5)  << getLoai()    << "|"
            << " " << setw(9)  << maSach       << "|"
-           << " " << setw(24) << tenSach      << "|"
-           << " " << setw(14) << tacGia       << "|"
-           << " " << setw(4)  << soBanLuu     << "|"
-           << " " << setw(17) << tenNguoiMuon << "|"
+           << " " << setw(21) << tenSach      << "|"
+           << " " << setw(14) << chuDe        << "|"
+           << " " << setw(17) << tacGia       << "|"
+           << " " << setw(15) << nhaXuatBan   << "|"
+           << " " << setw(7)  << namXuatBan   << "|"
+           << " " << setw(9)  << soTrang      << "|"
+           << " " << setw(8)  << soBanLuu     << "|"
            << " " << setw(11) << ngayMuon.toString()   << "|" 
-           << " " << setw(11) << ngayHenTra.toString() << "|"
-           << " " << setw(12) << trangThai    << "|\n";
+           << " " << setw(13) << ngayHenTra.toString() << "|"
+           << " " << setw(11) << trangThai    << "|\n";
     }
 
     string ghiRaFile() const override {
         ostringstream o;
-        o << "V|" << maSach << "|" << tenSach << "|" << tacGia << "|" << soBanLuu << "|"
-          << ngayMuon.toString() << "|" << ngayHenTra.toString() << "|" << tenNguoiMuon;
+        o << "V|" << maSach << "|" << tenSach << "|" << chuDe << "|" << tacGia << "|" 
+          << nhaXuatBan << "|" << namXuatBan << "|" << soTrang << "|" << soBanLuu << "|"
+          << ngayMuon.toString() << "|" << ngayHenTra.toString();
         return o.str();
     }
 
     void docTuFile(const string& dong) override {
         istringstream ss(dong); string tok;
         getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
-        getline(ss, tacGia, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
+        getline(ss, chuDe, '|'); getline(ss, tacGia, '|'); getline(ss, nhaXuatBan, '|');
+        getline(ss, tok, '|'); namXuatBan = stoi(tok);
+        getline(ss, tok, '|'); soTrang = stoi(tok);
+        getline(ss, tok, '|'); soBanLuu = stoi(tok);
         
         string ngM, ngT;
         getline(ss, ngM, '|'); ngayMuon.ganTuChuoi(ngM);
-        getline(ss, ngT, '|'); ngayHenTra.ganTuChuoi(ngT);
-        getline(ss, tenNguoiMuon);
+        getline(ss, ngT);      ngayHenTra.ganTuChuoi(ngT);
     }
 };
 
@@ -205,7 +219,7 @@ private:
         if (gioMuon.isChuaTra()) return 0;
         int phutMuon = gioMuon.getGio() * 60 + gioMuon.getPhut();
         
-        MyTime gioHienTai(14, 0, 0); // Gio bao cao
+        MyTime gioHienTai(14, 0, 0); // Gio bao cao do an
         int phutHienTai = gioHienTai.getGio() * 60 + gioHienTai.getPhut();
         
         int diff = phutHienTai - phutMuon;
@@ -216,10 +230,9 @@ public:
     SachMuonDoc() {}
     char getLoai() const override { return 'D'; }
 
-    // Logic kiem tra qua han don gian nhat: gioHienTai > gioHenTra
     bool isQuaHan() const override { 
         MyTime gioHienTai(14, 0, 0); 
-        if (gioHenTra.isChuaTra()) return false; // Neu khong hen tra thi khong qua han
+        if (gioHenTra.isChuaTra()) return false; 
         return gioHienTai > gioHenTra; 
     }
 
@@ -230,28 +243,32 @@ public:
     }
 
     void xuatDong(ostream& os) const override {
-        // Neu qua han -> in [QUA HAN], neu khong -> in thoi gian da doc
         string thoiGian;
         if (isQuaHan()) {
-            thoiGian = "[QUA HAN]";
+            thoiGian = "Qua Han";
         } else {
-            int t = tinhThoiGianDoc();
-            thoiGian = to_string(t/60) + "h" + to_string(t%60) + "m";
+            thoiGian = "Dang Muon";
         }
         
         os << left << "  |"
-           << " " << setw(9)  << maSach     << "|"
-           << " " << setw(24) << tenSach    << "|"
-           << " " << setw(14) << tacGia     << "|"
-           << " " << setw(4)  << soBanLuu   << "|"
-           << " " << setw(9)  << gioMuon.toString()    << "|"
-           << " " << setw(9)  << gioHenTra.toString()  << "|"
-           << " " << setw(21) << thoiGian   << "|\n";
+           << " " << setw(5)  << getLoai()    << "|"
+           << " " << setw(9)  << maSach       << "|"
+           << " " << setw(21) << tenSach      << "|"
+           << " " << setw(14) << chuDe        << "|"
+           << " " << setw(17) << tacGia       << "|"
+           << " " << setw(15) << nhaXuatBan   << "|"
+           << " " << setw(7)  << namXuatBan   << "|"
+           << " " << setw(9)  << soTrang      << "|"
+           << " " << setw(8)  << soBanLuu     << "|"
+           << " " << setw(11) << gioMuon.toString()   << "|"
+           << " " << setw(13) << gioHenTra.toString() << "|"
+           << " " << setw(11) << thoiGian    << "|\n";
     }
 
     string ghiRaFile() const override {
         ostringstream o;
-        o << "D|" << maSach << "|" << tenSach << "|" << tacGia << "|" << soBanLuu << "|"
+        o << "D|" << maSach << "|" << tenSach << "|" << chuDe << "|" << tacGia << "|" 
+          << nhaXuatBan << "|" << namXuatBan << "|" << soTrang << "|" << soBanLuu << "|"
           << gioMuon.toString() << "|" << gioHenTra.toString();
         return o.str();
     }
@@ -259,7 +276,10 @@ public:
     void docTuFile(const string& dong) override {
         istringstream ss(dong); string tok;
         getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
-        getline(ss, tacGia, '|'); getline(ss, tok, '|'); soBanLuu = stoi(tok);
+        getline(ss, chuDe, '|'); getline(ss, tacGia, '|'); getline(ss, nhaXuatBan, '|');
+        getline(ss, tok, '|'); namXuatBan = stoi(tok);
+        getline(ss, tok, '|'); soTrang = stoi(tok);
+        getline(ss, tok, '|'); soBanLuu = stoi(tok);
         
         string gM, gT;
         getline(ss, gM, '|'); gioMuon.ganTuChuoi(gM);
@@ -272,38 +292,38 @@ public:
 // ================================================================
 class GiaoDien {
 public:
-    static void duongKeVe(ostream& os) { os << "  +----------+-------------------------+---------------+-----+------------------+------------+------------+-------------+\n"; }
-    static void duongKeDoc(ostream& os) { os << "  +----------+-------------------------+---------------+-----+----------+----------+----------------------+\n"; }
+    static void duongKeBan(ostream& os) { 
+        os << "  +------+----------+----------------------+---------------+------------------+----------------+--------+----------+---------+------------+--------------+------------+\n"; 
+    }
     
     static void tieuDeVe(ostream& os) {
-        os << "\n  +-----------------------------------------------------------------------------------------------------------------------+\n"
-           << "  |                                        DANH SACH MUON VE                                                              |\n";
-        duongKeVe(os);
-        os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Tac gia" 
-           << "| " << setw(4) << "SL" << "| " << setw(17) << "Nguoi muon" << "| " << setw(11) << "Ngay muon" 
-           << "| " << setw(11) << "Ngay tra" << "| " << setw(12) << "Trang thai" << "|\n";
-        duongKeVe(os);
+        os << "\n  DANH SACH CUA SACH MUON VE\n";
+        duongKeBan(os);
+        os << left << "  | " << setw(5) << "Loai" << "| " << setw(9) << "Ma sach" << "| " << setw(21) << "Ten sach" 
+           << "| " << setw(14) << "Chu de" << "| " << setw(17) << "Ten tac gia" << "| " << setw(15) << "Nha xuat ban" 
+           << "| " << setw(7) << "Nam XB" << "| " << setw(9) << "So trang" << "| " << setw(8) << "Ban luu" 
+           << "| " << setw(11) << "Ngay muon" << "| " << setw(13) << "Ngay hen tra" << "| " << setw(11) << "Trang thai" << "|\n";
+        duongKeBan(os);
     }
 
     static void tieuDeDoc(ostream& os) {
-        os << "\n  +-------------------------------------------------------------------------------------------------------+\n"
-           << "  |                                        DANH SACH MUON DOC                                             |\n";
-        duongKeDoc(os);
-        // Da doi ten cot thanh Gio hen de phu hop voi code hien tai
-        os << left << "  | " << setw(9) << "Ma sach" << "| " << setw(24) << "Ten sach" << "| " << setw(14) << "Tac gia" 
-           << "| " << setw(4) << "SL" << "| " << setw(9) << "Gio muon" << "| " << setw(9) << "Gio hen" 
-           << "| " << setw(21) << "Trang thai/Thoi gian" << "|\n";
-        duongKeDoc(os);
+        os << "\n  DANH SACH CUA SACH MUON DOC\n";
+        duongKeBan(os);
+        os << left << "  | " << setw(5) << "Loai" << "| " << setw(9) << "Ma sach" << "| " << setw(21) << "Ten sach" 
+           << "| " << setw(14) << "Chu de" << "| " << setw(17) << "Ten tac gia" << "| " << setw(15) << "Nha xuat ban" 
+           << "| " << setw(7) << "Nam XB" << "| " << setw(9) << "So trang" << "| " << setw(8) << "Ban luu" 
+           << "| " << setw(11) << "Gio muon" << "| " << setw(13) << "Gio tra" << "| " << setw(11) << "Trang thai" << "|\n";
+        duongKeBan(os);
     }
 
     static void xuatBang(ostream& os, const vector<Sach*>& ds) {
         tieuDeVe(os); bool coVe = false;
-        for (const Sach* s : ds) if (s->getLoai() == 'V') { s->xuatDong(os); duongKeVe(os); coVe = true; }
-        if (!coVe) { os << "  | " << left << setw(117) << "Khong co sach muon ve" << "|\n"; duongKeVe(os); }
+        for (const Sach* s : ds) if (s->getLoai() == 'V') { s->xuatDong(os); duongKeBan(os); coVe = true; }
+        if (!coVe) { os << "  | " << left << setw(151) << "Khong co sach muon ve" << "|\n"; duongKeBan(os); }
 
         tieuDeDoc(os); bool coDoc = false;
-        for (const Sach* s : ds) if (s->getLoai() == 'D') { s->xuatDong(os); duongKeDoc(os); coDoc = true; }
-        if (!coDoc) { os << "  | " << left << setw(101) << "Khong co sach muon doc" << "|\n"; duongKeDoc(os); }
+        for (const Sach* s : ds) if (s->getLoai() == 'D') { s->xuatDong(os); duongKeBan(os); coDoc = true; }
+        if (!coDoc) { os << "  | " << left << setw(151) << "Khong co sach muon doc" << "|\n"; duongKeBan(os); }
     }
 };
 
@@ -360,17 +380,21 @@ public:
     }
 
     void timKiem() const {
-        string tu; cout << "  Nhap tu khoa (Ma/Ten/TacGia): "; getline(cin, tu);
+        string tu; cout << "  Nhap tu khoa (Ma/Ten/Chu De/Tac Gia): "; getline(cin, tu);
         for (char& c : tu) c = tolower(c);
         
         vector<Sach*> dsKetQua;
         for (Sach* s : dsSach) {
-            string ma = s->getMaSach(), ten = s->getTenSach(), tg = s->getTacGia();
+            string ma = s->getMaSach(), ten = s->getTenSach(), tg = s->getTacGia(), cd = s->getChuDe();
             for (char& c : ma) c = tolower(c); 
             for (char& c : ten) c = tolower(c); 
             for (char& c : tg) c = tolower(c);
-            if (ma.find(tu) != string::npos || ten.find(tu) != string::npos || tg.find(tu) != string::npos)
+            for (char& c : cd) c = tolower(c);
+            
+            if (ma.find(tu) != string::npos || ten.find(tu) != string::npos || 
+                tg.find(tu) != string::npos || cd.find(tu) != string::npos) {
                 dsKetQua.push_back(s);
+            }
         }
         
         if (dsKetQua.empty()) cout << "  => Khong tim thay ket qua phu hop!\n";
@@ -409,10 +433,14 @@ public:
         cout << "  +--------------------------------+\n";
         cout << "  | 1. Ma sach                     |\n";
         cout << "  | 2. Ten sach                    |\n";
-        cout << "  | 3. Tac gia                     |\n";
-        cout << "  | 4. So luong                    |\n";
+        cout << "  | 3. Chu de                      |\n";
+        cout << "  | 4. Tac gia                     |\n";
+        cout << "  | 5. Nha xuat ban                |\n";
+        cout << "  | 6. Nam xuat ban                |\n";
+        cout << "  | 7. So trang                    |\n";
+        cout << "  | 8. Ban luu (So luong)          |\n";
         cout << "  +--------------------------------+\n";
-        cout << "  Nhap cac lua chon (VD: 124 de sua Ma, Ten, So luong): ";
+        cout << "  Nhap cac lua chon (VD: 124 de sua Ma, Ten, Tac gia): ";
         
         string choices;
         getline(cin, choices);
@@ -430,11 +458,27 @@ public:
                 s->setTenSach(newTen);
             }
             else if (c == '3') {
+                string newCD; cout << "  - Nhap chu de moi: "; getline(cin, newCD);
+                s->setChuDe(newCD);
+            }
+            else if (c == '4') {
                 string newTG; cout << "  - Nhap tac gia moi: "; getline(cin, newTG);
                 s->setTacGia(newTG);
             }
-            else if (c == '4') {
-                int newSL; cout << "  - Nhap so luong moi: "; cin >> newSL; cin.ignore();
+            else if (c == '5') {
+                string newNXB; cout << "  - Nhap nha xuat ban moi: "; getline(cin, newNXB);
+                s->setNhaXuatBan(newNXB);
+            }
+            else if (c == '6') {
+                int newNam; cout << "  - Nhap nam xuat ban moi: "; cin >> newNam; cin.ignore();
+                s->setNamXuatBan(newNam);
+            }
+            else if (c == '7') {
+                int newST; cout << "  - Nhap so trang moi: "; cin >> newST; cin.ignore();
+                s->setSoTrang(newST);
+            }
+            else if (c == '8') {
+                int newSL; cout << "  - Nhap so luong ban luu moi: "; cin >> newSL; cin.ignore();
                 s->setSoBanLuu(newSL);
             }
         }
