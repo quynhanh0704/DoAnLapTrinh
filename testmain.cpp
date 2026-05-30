@@ -333,7 +333,7 @@ public:
 class ThuVien {
 private:
     vector<Sach*> dsSach;
-    string tenFile;
+    vector<string> dsFile;
 
     int timViTri(const string& ma) const {
         for (int i = 0; i < (int)dsSach.size(); i++)
@@ -342,29 +342,67 @@ private:
     }
 
 public:
-    ThuVien(const string& file = "input.txt") : tenFile(file) {}
+    ThuVien(const vector<string>& files)  { dsFile = files; }
     ~ThuVien() { for (Sach* s : dsSach) delete s; }
 
     void docTuFile() {
-        ifstream f(tenFile);
-        if (!f.is_open()) { cout << "  [!] Khong mo duoc file: " << tenFile << "\n"; return; }
-        for (Sach* s : dsSach) delete s; dsSach.clear();
-        
-        string dong;
-        while (getline(f, dong)) {
-            if (dong.empty()) continue;
-            Sach* s = nullptr;
-            if (dong[0] == 'V') s = new SachMuonVe();
-            else if (dong[0] == 'D') s = new SachMuonDoc();
-            if (s) { s->docTuFile(dong); dsSach.push_back(s); }
+        for (Sach* s : dsSach) delete s;
+
+        dsSach.clear();
+
+        for (size_t i = 0; i < dsFile.size(); i++)
+        {
+            ifstream f(dsFile[i]);
+            if (!f.is_open())
+            {
+                cout << "  [!] Khong mo duoc file: "
+                    << dsFile[i] << endl;
+                continue;
+            }
+            string dong;
+            while (getline(f, dong))
+            {
+                if (dong.empty()) continue;
+                Sach* s = NULL;
+
+                if (dong[0] == 'V')
+                    s = new SachMuonVe();
+                else if (dong[0] == 'D')
+                    s = new SachMuonDoc();
+                if (s != NULL)
+                {
+                    s->docTuFile(dong);
+                    dsSach.push_back(s);
+                }
+            }
+            f.close();
         }
-        cout << "  Da doc " << dsSach.size() << " cuon sach tu file.\n";
+
+        cout << "  Da doc "
+            << dsSach.size()
+            << " cuon sach tu "
+            << dsFile.size()
+            << " file.\n";
     }
 
     void ghiRaFile() const {
-        ofstream f(tenFile);
-        if (!f.is_open()) return;
-        for (const Sach* s : dsSach) f << s->ghiRaFile() << "\n";
+        ofstream fileVe("SachMuonVe.txt");
+        ofstream fileDoc("SachMuonDoc.txt");
+
+        if(!fileVe.is_open() || !fileDoc.is_open())
+            return;
+
+        for(size_t i=0;i<dsSach.size();i++)
+        {
+            if(dsSach[i]->getLoai() == 'V')
+                fileVe << dsSach[i]->ghiRaFile() << endl;
+
+            else if(dsSach[i]->getLoai() == 'D')
+                fileDoc << dsSach[i]->ghiRaFile() << endl;
+        }
+
+    fileVe.close();
+    fileDoc.close();
     }
 
     void xuatDanhSach() const {
@@ -544,7 +582,10 @@ public:
 };
 
 int main() {
-    ThuVien tv("input.txt");
+    vector<string> dsFile;
+    dsFile.push_back("SachMuonVe.txt");
+    dsFile.push_back("SachMuonDoc.txt");
+    ThuVien tv(dsFile);
     tv.chayMenu();
     return 0;
 }
