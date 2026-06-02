@@ -118,6 +118,8 @@ public:
     string getTenSach() const { return tenSach; }
     string getChuDe() const { return chuDe; }
     string getTacGia() const { return tacGia; }
+    string getNhaXuatBan() const { return nhaXuatBan; }
+    string getTGXuatBan() const { return TGXuatBan.toString(); }
     
     void setMaSach(string ma) { maSach = ma; }
     void setTenSach(string ten) { tenSach = ten; }
@@ -355,8 +357,7 @@ public:
             ifstream f(dsFile[i]);
             if (!f.is_open())
             {
-                cout << "  [!] Khong mo duoc file: "
-                    << dsFile[i] << endl;
+                cout << "  [!] Khong mo duoc file: " << dsFile[i] << endl;
                 continue;
             }
             string dong;
@@ -378,11 +379,7 @@ public:
             f.close();
         }
 
-        cout << "  Da doc "
-            << dsSach.size()
-            << " cuon sach tu "
-            << dsFile.size()
-            << " file.\n";
+        cout << "  Da doc " << dsSach.size() << " cuon sach tu " << dsFile.size() << " file.\n";
     }
 
     void ghiRaFile() const {
@@ -401,8 +398,8 @@ public:
                 fileDoc << dsSach[i]->ghiRaFile() << endl;
         }
 
-    fileVe.close();
-    fileDoc.close();
+        fileVe.close();
+        fileDoc.close();
     }
 
     void xuatDanhSach() const {
@@ -418,19 +415,24 @@ public:
     }
 
     void timKiem() const {
-        string tu; cout << "  Nhap thong tin cua sach can tim (Ma/Ten/Chu De/Tac Gia): "; getline(cin, tu);
+        string tu; cout << "  Nhap thong tin can tim (Ma/Ten/Chu De/Tac Gia/NXB/Thoi gian XB): "; getline(cin, tu);
         for (char& c : tu) c = tolower(c);
         
         vector<Sach*> dsKetQua;
         for (Sach* s : dsSach) {
             string ma = s->getMaSach(), ten = s->getTenSach(), tg = s->getTacGia(), cd = s->getChuDe();
+            string nxb = s->getNhaXuatBan(), nam = s->getTGXuatBan();
+            
             for (char& c : ma) c = tolower(c); 
             for (char& c : ten) c = tolower(c); 
             for (char& c : tg) c = tolower(c);
             for (char& c : cd) c = tolower(c);
+            for (char& c : nxb) c = tolower(c);
+            for (char& c : nam) c = tolower(c);
             
             if (ma.find(tu) != string::npos || ten.find(tu) != string::npos || 
-                tg.find(tu) != string::npos || cd.find(tu) != string::npos) {
+                tg.find(tu) != string::npos || cd.find(tu) != string::npos ||
+                nxb.find(tu) != string::npos || nam.find(tu) != string::npos) {
                 dsKetQua.push_back(s);
             }
         }
@@ -474,7 +476,7 @@ public:
         cout << "  | 3. Chu de                      |\n";
         cout << "  | 4. Tac gia                     |\n";
         cout << "  | 5. Nha xuat ban                |\n";
-        cout << "  | 6. Nam xuat ban                |\n";
+        cout << "  | 6. Thoi gian xuat ban          |\n";
         cout << "  | 7. So trang                    |\n";
         cout << "  | 8. Ban luu (So luong)          |\n";
         cout << "  +--------------------------------+\n";
@@ -508,8 +510,9 @@ public:
                 s->setNhaXuatBan(newNXB);
             }
             else if (c == '6') {
-                int newNam; cout << "  - Nhap nam xuat ban moi: "; cin >> newNam; cin.ignore();
-                s->setTGXuatBan(newNam);
+                cout << "  - Nhap thoi gian xuat ban moi (Ngay/Thang/Nam): ";
+                MyDate newDate; newDate.nhap(); cin.ignore();
+                s->setTGXuatBan(newDate);
             }
             else if (c == '7') {
                 int newST; cout << "  - Nhap so trang moi: "; cin >> newST; cin.ignore();
@@ -547,7 +550,7 @@ public:
             cout<<"\n  +======================================================+\n"
                 << "  |      HE THONG QUAN LY MUON TRA SACH THU VIEN         |\n"
                 << "  |======================================================|\n"
-                << "  |  1. Nhap thong tin tu file 'input.txt'               |\n"
+                << "  |  1. Nhap thong tin tu file                           |\n"
                 << "  |  2. Xuat ra man hinh                                 |\n"
                 << "  |  3. Xuat ra file 'ketqua.txt'                        |\n"
                 << "  |  4. Tim kiem sach                                    |\n"
