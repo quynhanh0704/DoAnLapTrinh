@@ -1,3 +1,50 @@
-D|MS04|Sherlock Homes|Tieu thuyet|Conan Dyles|NXB Kim Dong|10/10/2003|100|10|14:30|16:40
-D|MS09|Lap Trinh C++|CNTT|Co Oanh|Dai hoc Vinh|09/11/1980|350|10|10:20|13:02
-D|MS06|Tam Ly Hoc dai cuong|Tam Ly|Pioget|Giao Duc|12/03/2006|200|10|08:00|11:30
+D|MS001|Tu duy toi uu cho sinh vien|Ky nang song|Stephen Covey|Nha xuat ban Tre|15/09/1989|340|55|08:00|11:30
+D|MS002|Giao trinh Phap luat dai cuong|Phap ly|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|20/08/2022|280|32|08:15|11:45
+D|MS003|Nghe thuat giai quyet van de|Tu duy va Sang tao|Ken Watanabe|Nha xuat ban Tre|12/03/2007|190|38|08:30|12:00
+D|MS004|Nhap mon Xac suat thong ke|Toan hoc ung dung|Nguyen Dinh Tri|Nha xuat ban Giao duc|10/01/2015|310|42|08:45|13:30
+D|MS005|Kinh te vi mo ung dung|Kinh te - Tai chinh|Paul Krugman|Nha xuat ban Kinh te Quoc dan|25/05/2012|520|115|09:00|14:00
+D|MS006|Bi mat cua mot tri nho sieu viet|Ky nang sinh vien|Eran Katz|Nha xuat ban Phu Nu|14/11/2006|290|48|09:15|14:15
+D|MS007|Kien thuat thiet ke thuat toan|Cong nghe thong tin|Steven Skiena|Nha xuat ban Bach Khoa|18/06/2018|450|95|09:30|14:30
+D|MS008|Ngon ngu co the mien che|Ky nang mem|Allan Pease|Nha xuat ban Tong hop|09/04/2004|380|68|09:45|15:00
+D|MS009|Tam ly hoc ve tien|Kinh te - Tai chinh|Morgan Housel|Nha xuat ban Tre|08/09/2020|320|75|10:00|15:15
+D|MS010|Ky nang quan ly du an CNTT|Cong nghe thong tin|Kathy Schwalbe|Nha xuat ban Buu Dien|11/11/2014|410|85|10:15|15:30
+D|MS011|Giao trinh Kinh te chinh tri Mac|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|30/06/2021|260|20|10:30|15:45
+D|MS012|Thiet ke giao dien nguoi dung|Cong nghe thong tin|Don Norman|Nha xuat ban Lao Dong|22/10/1988|350|70|10:45|16:00
+D|MS013|Nguoi thong minh giai quyet viec ntn|Phat trien ban than|Sigma|Nha xuat ban Tre|05/05/2019|240|40|11:00|16:15
+D|MS014|Giao tiep thuyet phuc trong kinh doanh|Ky nang mem|Dale Carnegie|Fahasa|14/02/1940|300|50|11:15|16:30
+D|MS015|Sieu co don va suc manh noi tam|Tam ly hoc|Susan Cain|Nha xuat ban Tre|24/01/2012|400|80|13:00|16:45
+D|MS016|Ban  tu duy cho sinh vien|Tu duy va Sang tao|Tony Buzan|Nha xuat ban Lao Dong|17/07/2005|210|35|13:15|17:00
+D|MS017|Quan tri chien luoc hien dai|Kinh te - Quan tri|Fred R David|Nha xuat ban Kinh te Quoc dan|19/03/2016|580|130|13:30|17:15
+D|MS018|Giao trinh Tin hoc dai cuong|Cong nghe thong tin|Nguyen To Thanh|Nha xuat ban Dai hoc Quoc gia|12/09/2018|330|45|13:45|17:30
+D|MS019|Nghe thuat viet lach sv|Ky nang nghien cuu|William Zinsser|Nha xuat ban Giao duc|03/03/1976|270|42|14:00|17:45
+D|MS020|Thoi quen thanh cong cua sv|Ky nang sinh vien|Sean Covey|Kim Dong|11/10/1998|290|52|14:15|18:00
+D|MS021|Nguyen ly tiep thi can ban|Kinh te - Marketing|Philip Kotler|Nha xuat ban Tre|20/05/2010|610|160|14:30|18:15
+D|MS022|Phan tich du lieu voi Python|Cong nghe thong tin|Wes McKinney|Nha xuat ban Bach Khoa|15/05/2012|460|110|14:45|18:30
+D|MS023|Tu duy kien truc va xay dung|Ky thuat - Xay dung|Le Van Thuong|Nha xuat ban Xay dung|07/07/2017|320|65|15:00|18:45
+D|MS024|Bi mat dot pha tieng Anh|Ky nang ngon ngu|AJ Hoge|Nha xuat ban Phu Nu|12/12/2014|250|48|15:15|19:00
+D|MS025|Ky nang lam viec nhom hieu qua|Ky nang mem|Michael West|Nha xuat ban Tre|18/02/2011|230|39|15:30|19:15
+D|MS026|Quan tri rui ro tai chinh|Kinh te - Tai chinh|John C Hull|Nha xuat ban Lao Dong|14/08/2015|500|125|15:45|19:30
+D|MS027|Cam nang thuc tap tot nghiep|Ky nang sinh vien|Tran Anh Tuan|Nha xuat ban Giao duc|01/04/2023|180|30|16:00|19:45
+D|MS028|He dieu hanh may tinh hien dai|Cong nghe thong tin|Silberschatz|Nha xuat ban Dai hoc Quoc gia|29/09/2019|640|145|16:15|20:00
+D|MS029|Ky nang phong van xin viec|Dinh huong nghe nghiep|Martin John|Nha xuat ban Hong Duc|22/06/2020|220|35|16:30|20:15
+D|MS030|Lich su cac hoc thuyet kinh te|Kinh te - Quan tri|Nghiem Xuan Quang|Nha xuat ban Giao duc|10/05/2013|360|55|16:45|20:30
+D|MS031|Toi uu hoa cong dung cua nao bo|Tu duy va Sang tao|Jim Kwik|Nha xuat ban Tre|28/04/2020|340|72|17:00|20:45
+D|MS032|Chu nghia khac ky trong doi song|Tam ly hoc|William B Irvine|Nha xuat ban Hong Duc|15/10/2008|310|60|17:15|21:00
+D|MS033|Kien thuc thuong thuc ve AI|Cong nghe thong tin|Kai-Fu Lee|Nha xuat ban The Gioi|14/09/2021|300|68|17:30|21:15
+D|MS034|Giao trinh Lich su Dang Cong san|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|15/08/2021|240|18|17:45|21:30
+D|MS035|Xay dung thuong hieu ca nhan|Dinh huong nghe nghiep|Dan Schawbel|Nha xuat ban Tre|05/01/2009|280|50|18:00|21:45
+D|MS036|Bi quyet thuyet trinh an tuong|Ky nang mem|Carmine Gallo|Nha xuat ban Tre|20/03/2014|310|58|18:15|22:00
+D|MS037|Cau truc du lieu va thuat toan C|Cong nghe thong tin|Nguyen Duc Nghia|Nha xuat ban Bach Khoa|12/05/2015|390|75|18:30|22:15
+D|MS038|Hieu ung chim moi trong marketing|Kinh te - Marketing|Richard Shotton|Nha xuat ban Tre|05/07/2018|270|62|18:45|22:30
+D|MS039|Hoc tap qua du an thuc te|Ky nang sinh vien|Jeremy Kraus|Nha xuat ban Giao duc|19/02/2021|230|40|19:00|22:45
+D|MS040|Toi uu hoa cong viec van phong|Ky nang lam viec|Inamori Kazuo|Nha xuat ban Tre|11/11/2010|250|45|19:15|23:00
+D|MS041|Giao trinh Tu tuong Ho Chi Minh|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|15/08/2021|220|18|19:30|23:15
+D|MS042|Ky nang quan ly tai chinh ca nhan|Kinh te - Tai chinh|Dave Ramsey|Nha xuat ban Tre|08/10/2013|330|65|19:45|23:30
+D|MS043|Lap trinh web phan tan va cloud|Cong nghe thong tin|Martin Fowler|Nha xuat ban Lao Dong|22/04/2017|480|120|20:00|23:45
+D|MS044|Ky nang Doc nhanh va Hieu sau|Tu duy va Sang tao|Tony Buzan|Nha xuat ban Phu Nu|14/06/2002|210|35|08:00|12:00
+D|MS045|Hanh trang vao nghe va doi song|Dinh huong nghe nghiep|Nguyen Phi Van|Nha xuat ban Tre|27/09/2019|300|55|08:30|14:30
+D|MS046|Dai so tuyen tinh cho ky su|Toan hoc ung dung|Kha Xuan Vinh|Nha xuat ban Giao duc|10/02/2011|290|38|09:00|15:00
+D|MS047|Tam ly hoc nhan cach sv|Tam ly hoc|Sigmund Freud|Nha xuat ban Hong Duc|03/03/1923|350|70|09:30|15:30
+D|MS048|Kinh te quoc te va thoi cuoc|Kinh te - Quan tri|Paul Krugman|Nha xuat ban Tre|12/11/2015|440|98|10:00|16:00
+D|MS049|Ky nang lanh dao cho nguoi tre|Ky nang mem|John C Maxwell|Fahasa|18/05/2008|260|48|10:30|16:30
+D|MS050|An toan va bao mat thong tin|Cong nghe thong tin|William Stallings|Nha xuat ban Bach Khoa|29/01/2016|510|135|11:00|17:00
