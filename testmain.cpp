@@ -41,6 +41,10 @@ public:
        if (nam == x.nam && thang == x.thang && ngay > x.ngay) return true;
        return false;
     }
+
+    bool operator==(const MyDate &a) const {
+        return ngay == a.ngay && thang == a.thang && nam == a.nam;
+    }
     
     string toString() const {
         stringstream ss;
