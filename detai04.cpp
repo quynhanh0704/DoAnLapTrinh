@@ -165,89 +165,79 @@ public:
 // ================================================================
 class SachMuonDoc : public Sach {
 private:
-    string gioMuon;
-    string gioTra;
+    MyTime gioMuon, gioHenTra; 
+
+    int tinhThoiGianDoc() const {
+        if (gioMuon.isChuaTra()) return 0;
+        int phutMuon = gioMuon.getGio() * 60 + gioMuon.getPhut();
+        
+        MyTime gioHienTai(14, 0, 0); // Gio bao cao do an
+        int phutHienTai = gioHienTai.getGio() * 60 + gioHienTai.getPhut();
+        
+        int diff = phutHienTai - phutMuon;
+        return (diff < 0) ? diff + 1440 : diff;
+    }
 
 public:
-    SachMuonDoc(string ma = "", string ten = "", string cd = "", string tg = "",
-                string nxb = "", string ngayXB = "", int trang = 0, int ban = 0,
-                string gioM = "", string gioT = "")
-        : Sach(ma, ten, cd, tg, nxb, ngayXB, trang, ban) {
-        gioMuon = gioM;
-        gioTra = gioT;
+    SachMuonDoc() {}
+    char getLoai() const override { return 'D'; }
+
+    bool isQuaHan() const override { 
+        MyTime gioHienTai(14, 0, 0); 
+        if (gioHenTra.isChuaTra()) return false; 
+        return gioHienTai > gioHenTra; 
     }
 
-    string getLoaiSach() { return "Muon doc"; }
-    void nhap();
-    void xuat();
-    bool quaHan();
+    void nhapThongTin() override {
+        Sach::nhapThongTin();
+        cout << "  Gio muon    (HH:MM)                        : "; gioMuon.nhap();
+        cout << "  Gio hen tra (HH:MM, go '--:--' neu khong)  : "; gioHenTra.nhap();
+    }
 
-    // 2 ham doc/ghi file co trong class SachMuonDoc
-    void docFile(string dong);
-    string ghiFile();
+    void xuatDong(ostream& os) const override {
+        string thoiGian;
+        if (isQuaHan()) {
+            thoiGian = "Qua Han";
+        } else {
+            thoiGian = "Dang Muon";
+        }
+        
+        os << left << "  |"
+           << " " << setw(5)  << getLoai()    << "|"
+           << " " << setw(9)  << maSach       << "|"
+           << " " << setw(21) << tenSach      << "|"
+           << " " << setw(14) << chuDe        << "|"
+           << " " << setw(17) << tacGia       << "|"
+           << " " << setw(20) << nhaXuatBan   << "|"
+           << " " << setw(13) << TGXuatBan.toString()   << "|"
+           << " " << setw(9)  << soTrang      << "|"
+           << " " << setw(8)  << soBanLuu     << "|"
+           << " " << setw(11) << gioMuon.toString()   << "|"
+           << " " << setw(13) << gioHenTra.toString() << "|"
+           << " " << setw(11) << thoiGian    << "|\n";
+    }
 
-    string chuyenChuoi() {
-        return ghiFile();
+    string ghiRaFile() const override {
+        ostringstream o;
+        o << "D|" << maSach << "|" << tenSach << "|" << chuDe << "|" << tacGia << "|" 
+          << nhaXuatBan << "|" << TGXuatBan.toString() << "|" << soTrang << "|" << soBanLuu << "|"
+          << gioMuon.toString() << "|" << gioHenTra.toString();
+        return o.str();
+    }
+
+    void docTuFile(const string& dong) override {
+        istringstream ss(dong); string tok;
+        getline(ss, tok, '|'); getline(ss, maSach, '|'); getline(ss, tenSach, '|');
+        getline(ss, chuDe, '|'); getline(ss, tacGia, '|'); getline(ss, nhaXuatBan, '|');
+        getline(ss, tok, '|'); TGXuatBan.ganTuChuoi(tok);
+        getline(ss, tok, '|'); soTrang = stoi(tok);
+        getline(ss, tok, '|'); soBanLuu = stoi(tok);
+        
+        string gM, gT;
+        getline(ss, gM, '|'); gioMuon.ganTuChuoi(gM);
+        getline(ss, gT);      gioHenTra.ganTuChuoi(gT);
     }
 };
-
-void SachMuonDoc::nhap() {
-    Sach::nhap();
-    cout << "Nhap gio muon doc (hh:mm): "; cin >> ws;
-    getline(cin, gioMuon);
-    cout << "Nhap gio tra (hh:mm): ";
-    getline(cin, gioTra);
-}
-
-void SachMuonDoc::xuat() {
-    Sach::xuat();
-    cout << left;
-    cout << "| " << setw(10) << "D";
-    cout << "| " << setw(12) << "";
-    cout << "| " << setw(12) << "";
-    cout << "| " << setw(10) << gioMuon;
-    cout << "| " << setw(10) << gioTra;
-    cout << "| " << endl;
-}
-
-// Doc day du thong tin cua SachMuonDoc tu file
-void SachMuonDoc::docFile(string dong) {
-    Sach::docFile(dong);
-
-    stringstream ss(dong);
-    string boQua, trangStr, banStr;
-
-    getline(ss, boQua, '|');      // loai
-    getline(ss, boQua, '|');      // ma
-    getline(ss, boQua, '|');      // ten
-    getline(ss, boQua, '|');      // chu de
-    getline(ss, boQua, '|');      // tac gia
-    getline(ss, boQua, '|');      // nha xuat ban
-    getline(ss, boQua, '|');      // ngay xuat ban
-    getline(ss, trangStr, '|');   // so trang
-    getline(ss, banStr, '|');     // so ban luu
-    getline(ss, gioMuon, '|');
-    getline(ss, gioTra, '|');
-}
-
-// Ghi day du thong tin cua SachMuonDoc ra file
-string SachMuonDoc::ghiFile() {
-    stringstream ss;
-    ss << "D|" << Sach::ghiFile() << "|" << gioMuon << "|" << gioTra;
-    return ss.str();
-}
-
-bool SachMuonDoc::quaHan() {
-    if (gioMuon.length() < 5 || gioTra.length() < 5) return false;
-
-    int phutMuon = atoi(gioMuon.substr(0, 2).c_str()) * 60
-                 + atoi(gioMuon.substr(3, 2).c_str());
-    int phutTra = atoi(gioTra.substr(0, 2).c_str()) * 60
-                + atoi(gioTra.substr(3, 2).c_str());
-
-    // Gia su muon doc qua 240 phut la qua gio
-    return (phutTra - phutMuon) > 240;
-}
 
 // ===============================================================================================================================
 // THU + HIEN
