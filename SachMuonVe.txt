@@ -1,50 +1,50 @@
-V|MS051|Tu duy nguoc trong cuoc song|Ky nang song|Nguyen Van Dung|Nha xuat ban Tre|15/08/2019|280|45|18/05/2026|17/05/2026
-V|MS052|Giao trinh Dai so tuyen tinh nang cao|Toan hoc|Nguyen Huu Viet|Nha xuat ban Giao duc|20/10/2021|350|50|10/05/2026|11/05/2026
-V|MS053|Lap trinh He thong nhung voi C|Cong nghe thong tin|Tran Minh Hoang|Nha xuat ban Bach Khoa|12/04/2018|420|65|11/05/2026|18/05/2026
-V|MS054|Giao trinh Kinh te quoc te|Kinh te - Tai chinh|Nguyen Xuan Thien|Nha xuat ban Kinh te Quoc dan|01/01/2022|550|120|11/05/2026|25/05/2026
-V|MS055|Thuat lanh dao thi truong|Quan tri kinh doanh|Eric Ries|Nha xuat ban Lao Dong|14/02/2015|320|35|12/05/2026|26/05/2026
-V|MS056|Giao trinh Lich su cac hoc thuyet chinh tri|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|30/06/2023|400|25|12/05/2026|19/05/2026
-V|MS057|Huong nghiep thoi dai so|Dinh huong nghe nghiep|Phan Van Truong|Nha xuat ban Kim Dong|18/09/2022|260|40|13/05/2026|27/05/2026
-V|MS058|Quan tri chuoi cung ung hien dai|Kinh te - Quan tri|David Simchi|Nha xuat ban Tre|05/05/2017|210|30|13/05/2026|20/05/2026
-V|MS059|Tam ly hoc tre em va thieu nien|Tam ly hoc|Jean Piaget|Nha xuat ban The Gioi|15/03/2012|310|55|14/05/2026|21/05/2026
-V|MS060|Marketing du kich trong ky nguyen moi|Kinh te - Marketing|Jay Levinson|Nha xuat ban Tre|22/11/2016|380|70|14/05/2026|28/05/2026
-V|MS061|Phan tich thiet ke thuat toan nang cao|Cong nghe thong tin|Ta Tuan Anh|Nha xuat ban Bach Khoa|10/10/2020|290|48|15/05/2026|22/05/2026
-V|MS062|Cam nang phat trien phan mem sach|Cong nghe thong tin|Robert Martin|Nha xuat ban Lao Dong|12/08/2019|240|38|15/05/2026|29/05/2026
-V|MS063|Thiet ke kien truc vi xu ly hien dai|Cong nghe thong tin|Tran Ngoc Thang|Nha xuat ban Giao duc|20/01/2021|300|60|16/05/2026|23/05/2026
-V|MS064|Kinh te chinh tri hoc mien quoc te|Kinh te chinh tri|Thomas Oatley|Nha xuat ban Tri Thuc|15/09/2015|340|55|16/05/2026|30/05/2026
-V|MS065|Giao trinh Lap trinh mang may tinh|Cong nghe thong tin|Nguyen Dinh Thuc|Nha xuat ban Dai hoc Quoc gia|20/08/2019|280|32|17/05/2026|24/05/2026
-V|MS066|Tu duy phan bien trong nghien cuu|Tu duy va Sang tao|Richard Paul|Nha xuat ban Tre|12/03/2015|190|38|17/05/2026|24/05/2026
-V|MS067|Co so du lieu phan tan va ung dung|Cong nghe thong tin|Do Xuan Loi|Nha xuat ban Giao duc|10/01/2017|310|42|18/05/2026|01/06/2026
-V|MS068|Kinh te vi mo hien dai|Kinh te - Tai chinh|N Gregory Mankiw|Nha xuat ban Kinh te Quoc dan|25/05/2020|520|115|18/05/2026|25/05/2026
-V|MS069|Bi mat cua phuong phap ghi nho sieu toc|Ky nang sinh vien|Harry Lorayne|Nha xuat ban Phu Nu|14/11/2014|290|48|19/05/2026|26/05/2026
-V|MS070|Kien truc may tinh va he dieu hanh|Cong nghe thong tin|William Stallings|Nha xuat ban Bach Khoa|18/06/2019|450|95|19/05/2026|26/05/2026
-V|MS071|Giao tiep bang ngon ngu co the hieu qua|Ky nang mem|Barbara Pease|Nha xuat ban Tong hop|09/04/2015|380|68|20/05/2026|03/06/2026
-V|MS072|Tam ly hoc hanh vi trong tai chinh|Kinh te - Tai chinh|Richard Thaler|Nha xuat ban Tre|08/09/2018|320|75|20/05/2026|27/05/2026
-V|MS073|Quan ly du an cong nghe thong tin hien dai|Cong nghe thong tin|Jack Marchewka|Nha xuat ban Buu Dien|11/11/2018|410|85|21/05/2026|04/06/2026
-V|MS074|Kinh te chinh tri Mac - Lenin nang cao|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|30/06/2022|260|20|21/05/2026|28/05/2026
-V|MS075|Thiet ke trai nghiem nguoi dung phan mem|Cong nghe thong tin|Don Norman|Nha xuat ban Lao Dong|22/10/2016|350|70|22/05/2026|29/05/2026
-V|MS076|Giai quyet xung dot va dam phan|Ky nang mem|William Ury|Nha xuat ban Tre|05/05/2018|240|40|22/05/2026|05/06/2026
-V|MS077|Chien luoc marketing thuong mai quoc te|Ky nang mem|Philip Kotler|Fahasa|14/02/2012|300|50|23/05/2026|30/05/2026
-V|MS078|Suc manh cua su tinh lang tam tri|Tam ly hoc|Eckhart Tolle|Nha xuat ban Tre|24/01/2015|400|80|23/05/2026|06/06/2026
-V|MS079|Phuong phap doc sach nhanh va hieu sau|Tu duy va Sang tao|Tony Buzan|Nha xuat ban Lao Dong|17/07/2014|210|35|24/05/2026|31/05/2026
-V|MS080|Quan tri rui ro tai chinh quoc te|Kinh te - Quan tri|John Hull|Nha xuat ban Kinh te Quoc dan|19/03/2019|580|130|24/05/2026|07/06/2026
-V|MS081|Giao trinh He thong thong tin quan ly|Cong nghe thong tin|Kenneth Laudon|Nha xuat ban Dai hoc Quoc gia|12/09/2020|330|45|25/05/2026|01/06/2026
-V|MS082|Phuong phap luan nghien cuu khoa hoc|Ky nang nghien cuu|Vu Cao Dam|Nha xuat ban Giao duc|03/03/2016|270|42|25/05/2026|01/06/2026
-V|MS083|Ky nang lanh dao danh cho sinh vien|Ky nang sinh vien|John C Maxwell|Kim Dong|11/10/2015|290|52|26/05/2026|02/06/2026
-V|MS084|Chien luoc marketing huong doi tuong|Kinh te - Marketing|David Aaker|Nha xuat ban Tre|20/05/2018|610|168|26/05/2026|02/06/2026
-V|MS085|Lap trinh khoa hoc du lieu voi R|Cong nghe thong tin|Hadley Wickham|Nha xuat ban Bach Khoa|15/05/2017|460|110|27/05/2026|03/06/2026
-V|MS086|Co ly thuyet kien truc va ket cau|Ky thuat - Xay dung|Nguyen Van Hiep|Nha xuat ban Xay dung|07/07/2019|320|65|27/05/2026|03/06/2026
-V|MS087|Phuong phap giang day tieng Anh hien dai|Ky nang ngon ngu|Jeremy Harmer|Nha xuat ban Phu Nu|12/12/2016|258|48|28/05/2026|11/06/2026
-V|MS088|Xay dung doi ngu lam viec hieu suat cao|Ky nang mem|Patrick Lencioni|Nha xuat ban Tre|18/02/2015|230|39|28/05/2026|04/06/2026
-V|MS089|Kinh te hoc hanh vi doanh nghiep|Kinh te - Tai chinh|Dan Ariely|Nha xuat ban Lao Dong|14/08/2018|500|125|29/05/2026|05/06/2026
-V|MS090|Huong dan thuc tap va viet bao cao|Ky nang sinh vien|Nguyen Van Tuan|Nha xuat ban Giao duc|01/04/2021|180|30|29/05/2026|05/06/2026
-V|MS091|Giao trinh He dieu hanh Linux va Unix|Cong nghe thong tin|Nguyen Trung Truc|Nha xuat ban Dai hoc Quoc gia|29/09/2020|640|145|30/05/2026|06/06/2026
-V|MS092|Nghe thuat phong van tuyen dung nhan su|Dinh huong nghe nghiep|Lou Adler|Nha xuat ban Hong Duc|22/06/2021|220|35|30/05/2026|13/06/2026
-V|MS093|Lich su phat trien kinh te the gioi|Kinh te - Quan tri|Rondo Cameron|Nha xuat ban Giao duc|10/05/2016|360|55|31/05/2026|14/06/2026
-V|MS094|Bi mat cua nang luc tu hoc|Tu duy va Sang tao|Brian Tracy|Nha xuat ban Tri Thuc|28/04/2022|340|72|01/06/2026|08/06/2026
-V|MS095|Loi song khac ky va binh yen tam tri|Tam ly hoc|Ryan Holiday|Nha xuat ban Hong Duc|15/10/2014|310|60|01/06/2026|15/06/2026
-V|MS096|Ung dung tri tue nhan tao trong kinh doanh|Cong nghe thong tin|Andrew Ng|Nha xuat ban The Gioi|14/09/2023|300|68|02/06/2026|16/06/2026
-V|MS097|Giao trinh duong loi cach mang VN|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|15/08/2022|240|18|02/06/2026|09/06/2026
-V|MS098|Phuong phap lam chu thuong hieu ca nhan|Dinh huong nghe nghiep|William Arruda|Nha xuat ban Tre|05/01/2015|280|50|03/06/2026|17/06/2026
-V|MS099|Thuyet trinh kinh doanh an tuong va thuyet phuc|Ky nang mem|Garr Reynolds|Nha xuat ban Tre|20/03/2018|310|58|03/06/2026|10/06/2026
-V|MS100|Co so du lieu va cau truc thuat toan C++|Cong nghe thong tin|Thomas Cormen|Nha xuat ban Bach Khoa|12/05/2018|390|75|04/06/2026|18/06/2026
+V|MS051|Giai dap hoc tap dai hoc|Ky nang sinh vien|Cal Newport|Nha xuat ban Tre|15/08/2005|280|45|10/05/2026|17/05/2026
+V|MS052|Tu duy phan bien|Ky nang sinh vien|Richard Paul|Nha xuat ban Tre|20/10/2006|350|50|10/05/2026|17/05/2026
+V|MS053|Lap trinh va cuoc song|Cong nghe thong tin|Linus Torvalds|Nha xuat ban Lao Dong|12/04/2001|420|65|11/05/2026|18/05/2026
+V|MS054|Kinh te hoc vi mo cho sinh vien|Kinh te - Quan tri|N. Gregory Mankiw|Nha xuat ban Kinh te Quoc dan|01/01/2018|550|120|11/05/2026|25/05/2026
+V|MS055|Dac nhan tam phien ban tre|Phat trien ban than|Dale Carnegie|Nha xuat ban Tong hop|14/02/1936|320|35|12/05/2026|26/05/2026
+V|MS056|Giao trinh Triet hoc Mac - Lenin|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|30/06/2021|400|25|12/05/2026|19/05/2026
+V|MS057|Huong nghiep trong ky nguyen so|Dinh huong nghe nghiep|Rosie Nguyen|Nha xuat ban Kim Dong|18/09/2022|260|40|13/05/2026|27/05/2026
+V|MS058|Quan tri thoi gian toi uu|Ky nang lam viec|Brian Tracy|Nha xuat ban Tre|05/05/2010|210|30|13/05/2026|20/05/2026
+V|MS059|Tam ly hoc dam dong|Tam ly hoc|Gustave Le Bon|Nha xuat ban The Gioi|15/03/1895|310|55|14/05/2026|21/05/2026
+V|MS060|Khan gia can don gian|Kinh te - Marketing|Philip Kotler|Nha xuat ban Tre|22/11/2015|380|70|14/05/2026|28/05/2026
+V|MS061|Bi mat cua mot tri tue sieu pham|Tu duy va Sang tao|Tony Buzan|Nha xuat ban Phu Nu|10/10/2003|290|48|15/05/2026|22/05/2026
+V|MS062|Cam nang song sot thoi sinh vien|Ky nang sinh vien|Nguyen Hoang|Nha xuat ban Giao duc|12/08/2023|240|38|15/05/2026|29/05/2026
+V|MS063|Thiet ke cuoc doi dang song|Phat trien ban than|Bill Burnett|Nha xuat ban Tre|20/01/2016|300|60|16/05/2026|23/05/2026
+V|MS064|Tu duy toi uu cho sinh vien|Ky nang song|Stephen Covey|Nha xuat ban Tre|15/09/1989|340|55|16/05/2026|30/05/2026
+V|MS065|Giao trinh Phap luat dai cuong|Phap ly|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|20/08/2022|280|32|17/05/2026|24/05/2026
+V|MS066|Nghe thuat giai quyet van de|Tu duy va Sang tao|Ken Watanabe|Nha xuat ban Tre|12/03/2007|190|38|17/05/2026|24/05/2026
+V|MS067|Nhap mon Xac suat thong ke|Toan hoc ung dung|Nguyen Dinh Tri|Nha xuat ban Giao duc|10/01/2015|310|42|18/05/2026|01/06/2026
+V|MS068|Kinh te vi mo ung dung|Kinh te - Tai chinh|Paul Krugman|Nha xuat ban Kinh te Quoc dan|25/05/2012|520|115|18/05/2026|25/05/2026
+V|MS069|Bi mat cua mot tri nho sieu viet|Ky nang sinh vien|Eran Katz|Nha xuat ban Phu Nu|14/11/2006|290|48|19/05/2026|26/05/2026
+V|MS070|Kien thuat thiet ke thuat toan|Cong nghe thong tin|Steven Skiena|Nha xuat ban Bach Khoa|18/06/2018|450|95|19/05/2026|26/05/2026
+V|MS071|Ngon ngu co the mien che|Ky nang mem|Allan Pease|Nha xuat ban Tong hop|09/04/2004|380|68|20/05/2026|03/06/2026
+V|MS072|Tam ly hoc ve tien|Kinh te - Tai chinh|Morgan Housel|Nha xuat ban Tre|08/09/2020|320|75|20/05/2026|27/05/2026
+V|MS073|Ky nang quan ly du an CNTT|Cong nghe thong tin|Kathy Schwalbe|Nha xuat ban Buu Dien|11/11/2014|410|85|21/05/2026|04/06/2026
+V|MS074|Giao trinh Kinh te chinh tri Mac|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|30/06/2021|260|20|21/05/2026|28/05/2026
+V|MS075|Thiet ke giao dien nguoi dung|Cong nghe thong tin|Don Norman|Nha xuat ban Lao Dong|22/10/1988|350|70|22/05/2026|29/05/2026
+V|MS076|Nguoi thong minh giai quyet viec ntn|Phat trien ban than|Sigma|Nha xuat ban Tre|05/05/2019|240|40|22/05/2026|05/06/2026
+V|MS077|Giao tiep thuyet phuc trong kinh doanh|Ky nang mem|Dale Carnegie|Fahasa|14/02/1940|300|50|23/05/2026|30/05/2026
+V|MS078|Sieu co don va suc manh noi tam|Tam ly hoc|Susan Cain|Nha xuat ban Tre|24/01/2012|400|80|23/05/2026|06/06/2026
+V|MS079|Ban doc tu duy cho sinh vien|Tu duy va Sang tao|Tony Buzan|Nha xuat ban Lao Dong|17/07/2005|210|35|24/05/2026|31/05/2026
+V|MS080|Quan tri chien luoc hien dai|Kinh te - Quan tri|Fred R David|Nha xuat ban Kinh te Quoc dan|19/03/2016|580|130|24/05/2026|07/06/2026
+V|MS081|Giao trinh Tin hoc dai cuong|Cong nghe thong tin|Nguyen To Thanh|Nha xuat ban Dai hoc Quoc gia|12/09/2018|330|45|25/05/2026|01/06/2026
+V|MS082|Nghe thuat viet lach dai hoc|Ky nang nghien cuu|William Zinsser|Nha xuat ban Giao duc|03/03/1976|270|42|25/05/2026|01/06/2026
+V|MS083|Thoi quen thanh cong cua ban|Ky nang sinh vien|Sean Covey|Kim Dong|11/10/1998|290|52|26/05/2026|02/06/2026
+V|MS084|Nguyen ly tiep thi can ban|Kinh te - Marketing|Philip Kotler|Nha xuat ban Tre|20/05/2010|610|160|26/05/2026|02/06/2026
+V|MS085|Phan tich du lieu voi Python|Cong nghe thong tin|Wes McKinney|Nha xuat ban Bach Khoa|15/05/2012|460|110|27/05/2026|03/06/2026
+V|MS086|Tu duy kien truc va xay dung|Ky thuat - Xay dung|Le Van Thuong|Nha xuat ban Xay dung|07/07/2017|320|65|27/05/2026|03/06/2026
+V|MS087|Bi mat dot pha tieng Anh|Ky nang ngon ngu|AJ Hoge|Nha xuat ban Phu Nu|12/12/2014|250|48|28/05/2026|11/06/2026
+V|MS088|Ky nang lam viec nhom hieu qua|Ky nang mem|Michael West|Nha xuat ban Tre|18/02/2011|230|39|28/05/2026|04/06/2026
+V|MS089|Quan tri rui ro tai chinh|Kinh te - Tai chinh|John C Hull|Nha xuat ban Lao Dong|14/08/2015|500|125|29/05/2026|05/06/2026
+V|MS090|Cam nang thuc tap tot nghiep|Ky nang sinh vien|Tran Anh Tuan|Nha xuat ban Giao duc|01/04/2023|180|30|29/05/2026|05/06/2026
+V|MS091|He dieu hanh may tinh hien dai|Cong nghe thong tin|Silberschatz|Nha xuat ban Dai hoc Quoc gia|29/09/2019|640|145|30/05/2026|06/06/2026
+V|MS092|Ky nang phong van xin viec|Dinh huong nghe nghiep|Martin John|Nha xuat ban Hong Duc|22/06/2020|220|35|30/05/2026|13/06/2026
+V|MS093|Lich su cac hoc thuyet kinh te|Kinh te - Quan tri|Nghiem Xuan Quang|Nha xuat ban Giao duc|10/05/2013|360|55|31/05/2026|14/06/2026
+V|MS094|Toi uu hoa cong dung cua nao bo|Tu duy va Sang tao|Jim Kwik|Nha xuat ban Tre|28/04/2020|340|72|01/06/2026|08/06/2026
+V|MS095|Chu nghia khac ky trong doi song|Tam ly hoc|William B Irvine|Nha xuat ban Hong Duc|15/10/2008|310|60|01/06/2026|15/06/2026
+V|MS096|Kien thuc thuong thuc ve AI|Cong nghe thong tin|Kai-Fu Lee|Nha xuat ban The Gioi|14/09/2021|300|68|02/06/2026|16/06/2026
+V|MS097|Giao trinh Lich su Dang Cong san|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|15/08/2021|240|18|02/06/2026|09/06/2026
+V|MS098|Xay dung thuong hieu ca nhan|Dinh huong nghe nghiep|Dan Schawbel|Nha xuat ban Tre|05/01/2009|280|50|03/06/2026|17/06/2026
+V|MS099|Bi quyet thuyet trinh an tuong|Ky nang mem|Carmine Gallo|Nha xuat ban Tre|20/03/2014|310|58|03/06/2026|10/06/2026
+V|MS100|Cau truc du lieu va thuat toan C|Cong nghe thong tin|Nguyen Duc Nghia|Nha xuat ban Bach Khoa|12/05/2015|390|75|04/06/2026|18/06/2026
