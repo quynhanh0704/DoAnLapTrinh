@@ -13,7 +13,7 @@
 using namespace std;
 
 // ================================================================
-//  CLASS MyDate (Xu ly ngay thang)
+//  class MyDate
 // ================================================================
 class MyDate {
 private:
@@ -41,10 +41,6 @@ public:
        if (nam == x.nam && thang == x.thang && ngay > x.ngay) return true;
        return false;
     }
-
-    bool operator==(const MyDate &a) const {
-        return ngay == a.ngay && thang == a.thang && nam == a.nam;
-    }
     
     string toString() const {
         stringstream ss;
@@ -55,7 +51,7 @@ public:
 };
 
 // ================================================================
-//  CLASS MyTime (Xu ly gio phut)
+//  Class MyTime
 // ================================================================
 class MyTime {
 private:
@@ -98,7 +94,7 @@ public:
 };
 
 // ================================================================
-//  LOP CO SO TRUU TUONG: Sach
+//  Class Sach
 // ================================================================
 class Sach {
 protected:
@@ -146,7 +142,7 @@ public:
 };
 
 // ================================================================
-//  LOP DAN XUAT: SachMuonVe
+//  Class SachMuonVe
 // ================================================================
 class SachMuonVe : public Sach {
 private:
@@ -156,7 +152,7 @@ public:
     SachMuonVe() {}
     char getLoai() const override { return 'V'; }
     bool isQuaHan() const override {
-        MyDate ngayHienTai(10, 6, 2026); // Ngay bao cao do an
+        MyDate ngayHienTai(10, 6, 2026);
         return (ngayHienTai > ngayHenTra); 
     }
 
@@ -206,7 +202,7 @@ public:
 };
 
 // ================================================================
-//  LOP DAN XUAT: SachMuonDoc
+//  Class SachMuonDoc
 // ================================================================
 class SachMuonDoc : public Sach {
 private:
@@ -267,7 +263,7 @@ public:
 };
 
 // ================================================================
-//  CLASS GIAO DIEN (Ve bang)
+//  Class GiaoDien
 // ================================================================
 class GiaoDien {
 public:
@@ -305,7 +301,7 @@ public:
 };
 
 // ================================================================
-//  LOP QUAN LY: ThuVien
+//  Class ThuVien
 // ================================================================
 class ThuVien {
 private:
