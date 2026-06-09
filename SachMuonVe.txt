@@ -47,3 +47,4 @@ V|MS097|Kien thuc thuong thuc ve AI|Cong nghe thong tin|Kai-Fu Lee|Nha xuat ban 
 V|MS098|Giao trinh Lich su Dang Cong san|Ly luan chinh tri|Bo Giao duc va Dao tao|Nha xuat ban Chinh tri Quoc gia|15/08/2021|240|18|02/06/2026|09/06/2026
 V|MS099|Xay dung thuong hieu ca nhan|Dinh huong nghe nghiep|Dan Schawbel|Nha xuat ban Tre|05/01/2009|280|50|03/06/2026|17/06/2026
 V|MS0100|Bi quyet thuyet trinh an tuong|Ky nang mem|Carmine Gallo|Nha xuat ban Tre|20/03/2014|310|58|03/06/2026|10/06/2026
+V|MS0101|Cau truc du lieu va thuat toan C|Cong nghe thong tin|Nguyen Duc Nghia|Nha xuat ban Bach Khoa|12/05/2015|390|75|04/06/2026|18/06/2026
