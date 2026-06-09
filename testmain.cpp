@@ -163,7 +163,7 @@ public:
     void nhapThongTin() override {
         Sach::nhapThongTin();
         cout << "  Ngay muon (VD: 01/05/2026) : "; ngayMuon.nhap(); cin.ignore();
-        cout << "  Ngay tra  (VD: 15/05/2026) : "; ngayHenTra.nhap(); cin.ignore();
+        cout << "  Ngay hen tra  (VD: 15/05/2026) : "; ngayHenTra.nhap(); cin.ignore();
     }
 
     void xuatDong(ostream& os) const override {
